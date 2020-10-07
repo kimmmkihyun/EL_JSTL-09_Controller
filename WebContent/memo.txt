@@ -1,0 +1,29 @@
+drop table member cascade constraints ;
+drop sequence m_seq;
+
+create table member(
+	num number primary key,
+	id varchar2(20) not null,
+	passwd varchar2(10) not null,
+	name varchar2(20) not null,
+	register date default sysdate
+);
+
+
+create sequence m_seq
+	increment by 1
+	start with 1 
+	minvalue 1
+	maxvalue 10000
+	nocache;
+
+
+insert into member(num,id,passwd,name)
+ values(m_seq.nextval,'IU','111','æ∆¿Ã¿Ø');
+
+commit; 
+
+col id for a10
+col passwd for a10
+col name for a10
+select * from member;
